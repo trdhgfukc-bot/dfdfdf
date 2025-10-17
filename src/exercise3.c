@@ -8,10 +8,20 @@ int main(int argc, char** argv) {
     scanf("%d", &k);
     for (int i = 0; i < 10; ++i){
         if (k>0){
-            if (i+k<10){
-            a[i]=g[i+k];}
+            if(i-k>-1){
+            a[i]=g[i-k];
+            }
+            else {
+                a[i]=g[10-k+i];
+            }
+        
+        }
+        else{
+            if (i+k>-1){
+                a[i]=g[i+k];
+            }
             else{
-                a[i]=g[i-k];
+                a[i]=g[10+k+i];
             }
         }
     }
