@@ -7,8 +7,8 @@ int main(int argc, char** argv) {
     for (int i = 0; i < 10; ++i){
         scanf("%f", &g[i]);  
     }
-    scanf("%f", &x);
     scanf("%d", &k);
+    scanf("%f", &x);
     for (int i = 0; i < 10; ++i){
         if (i<k){
             a[i]=g[i];
