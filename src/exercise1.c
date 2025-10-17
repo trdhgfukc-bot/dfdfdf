@@ -6,6 +6,6 @@ int main(int argc, char** argv) {
         scanf("%lf", &num);
         sum+=num;
     }
-    printf("%.2f\n", sum /10);
+    printf("%.3f\n", sum /10);
     return 0;
 }
