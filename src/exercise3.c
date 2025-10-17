@@ -8,21 +8,12 @@ int main(int argc, char** argv) {
     scanf("%d", &k);
     for (int i = 0; i < 10; ++i){
         if (k>0){
-            if (i==0){
-                a[i]=g[9];
-            }
-            else {
-                a[i]=g[i-1];
+            if (i+k<10){
+            a[i]=g[i+k];}
+            else{
+                a[i]=g[i-k];
             }
         }
-        else{
-            if (i==9){
-                a[9]=g[0];
-            }
-            else{
-                a[i]=g[i+1];
-            }
-        }   
     }
     for (int i = 0; i < 10; i++){
         printf("%.2f ", a[i]);
