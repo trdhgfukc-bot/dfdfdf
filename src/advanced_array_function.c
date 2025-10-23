@@ -80,6 +80,5 @@ int length_of_lis(int* nums, int numsSize) {
 }
 
 int* merge(int* intervals, int intervalsSize, int* returnSize) {
-    
-    return NULL;
+    return 0;
 }
