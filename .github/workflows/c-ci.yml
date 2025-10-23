@@ -6,9 +6,15 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "homework4" branch
   push:
+<<<<<<< HEAD
     branches: [ "homework4" ]
   pull_request:
     branches: [ "homework4" ]
+=======
+    branches: [ "homework6" ]
+  pull_request:
+    branches: [ "homework6" ]
+>>>>>>> 0a9229e7cb10baa9365cfb904fed7882381d9072
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -16,15 +22,15 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  makeBin:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+<<<<<<< HEAD
       - name: Build all
         run: make
 
@@ -48,3 +54,38 @@ jobs:
 
       - name: Clean
         run: make clean
+=======
+      - name: create a bin directory
+        run: make bin
+
+
+  test1:
+    needs: makeBin
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: running tests for max_sum_array
+        run: make test1
+        
+  test2:
+    needs: makeBin
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: running tests for length_of_lis
+        run: make test2
+
+  test3:
+    needs: makeBin
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: running tests for merge_interval
+        run: make test3
+>>>>>>> 0a9229e7cb10baa9365cfb904fed7882381d9072
