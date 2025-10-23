@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
 
    
     for (int i = 0; i<10; ++i){
-        printf(" %f", a[i]);
+        printf(" %0.f", a[i]);
     }
     return 0;
 }
