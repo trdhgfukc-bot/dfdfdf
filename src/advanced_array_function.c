@@ -16,10 +16,10 @@ int max_subarray_sum(int* nums, int size) {
                 podmas[tlen] = nums[startpos + tlen];
             }
             for (int x = 0; x <= len; x++) {
-                if ( podmas[x] < 0){
+                if ( nums[x] < 0){
                     cnt++;
                 }
-            if (cnt == len) {
+            if (cnt == size) {
                 Flag = 0;
             } else {
                 Flag = 1;
@@ -39,16 +39,14 @@ int max_subarray_sum(int* nums, int size) {
                     }
                 }
                 min = tmin;
-                min = -1 * min;
             }
         }
     }
-    if (max != 0){
+    if (Flag == 1){
         return max;
     } else {
         return min;
     }
-    return 0;
 }
 
 int length_of_lis(int* nums, int numsSize) {
