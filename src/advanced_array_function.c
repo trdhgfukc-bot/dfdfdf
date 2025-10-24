@@ -77,6 +77,71 @@ int length_of_lis(int* nums, int numsSize) {
     return max_length;
 }
 
+#include <stdio.h>
+#include <stdlib.h>
+
+// Функция сравнения для qsort - сортировка по началу интервала
+int compare(const void* a, const void* b) {
+    int* interval1 = (int*)a;
+    int* interval2 = (int*)b;
+    return interval1[0] - interval2[0];
+}
 int* merge(int* intervals, int intervalsSize, int* returnSize) {
-    return 0;
+    if (intervalsSize == 0) {
+        *returnSize = 0;
+        return NULL;
+    }
+    
+    // Создаем массив для удобной работы с интервалами
+    int** intervalsArr = (int**)malloc(intervalsSize * sizeof(int*));
+    for (int i = 0; i < intervalsSize; i++) {
+        intervalsArr[i] = &intervals[i * 2];
+    }
+    
+    // Сортируем интервалы по началу
+    qsort(intervalsArr, intervalsSize, sizeof(int*), compare);
+    
+    // Временный массив для результата
+    int** result = (int**)malloc(intervalsSize * sizeof(int*));
+    int resultSize = 0;
+    
+    // Добавляем первый интервал
+    result[resultSize] = (int*)malloc(2 * sizeof(int));
+    result[resultSize][0] = intervalsArr[0][0];
+    result[resultSize][1] = intervalsArr[0][1];
+    resultSize++;
+    
+    // Объединяем интервалы
+    for (int i = 1; i < intervalsSize; i++) {
+        int* current = intervalsArr[i];
+        int* last = result[resultSize - 1];
+        
+        // Если текущий интервал пересекается с последним в результате
+        if (current[0] <= last[1]) {
+            // Объединяем интервалы
+            if (current[1] > last[1]) {
+                last[1] = current[1];
+            }
+        } else {
+            // Добавляем новый интервал в результат
+            result[resultSize] = (int*)malloc(2 * sizeof(int));
+            result[resultSize][0] = current[0];
+            result[resultSize][1] = current[1];
+            resultSize++;
+        }
+    }
+    
+    // Преобразуем результат в одномерный массив
+    int* flatResult = (int*)malloc(resultSize * 2 * sizeof(int));
+    for (int i = 0; i < resultSize; i++) {
+        flatResult[i * 2] = result[i][0];
+        flatResult[i * 2 + 1] = result[i][1];
+        free(result[i]);
+    }
+    
+    free(result);
+    free(intervalsArr);
+    
+    *returnSize = resultSize * 2;
+    return flatResult;
 }
