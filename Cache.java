@@ -16,5 +16,9 @@ public void add(T item){
     }
 public bool remove(T item){
     return el.remove(item);
-}   
+}  
+public bool exist(T item){
+    return el.contains(item);
+}
+
 }
