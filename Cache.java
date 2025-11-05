@@ -9,5 +9,10 @@ public class Cache<T>{
     this.size = size;
     this.el = new LinkedList<>();
 }
+public void add(T item){
+    el.addLast(item);
+    if (el.size()>size){
+        el.removeFirst();}
+    }
 
 }
