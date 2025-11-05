@@ -26,5 +26,4 @@ public T getFirst(){
 public T getLust(){
     return el.getLast();
 }
-
 }
