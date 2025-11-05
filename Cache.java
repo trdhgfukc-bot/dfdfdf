@@ -14,5 +14,7 @@ public void add(T item){
     if (el.size()>size){
         el.removeFirst();}
     }
-
+public bool remove(T item){
+    return el.remove(item);
+}   
 }
