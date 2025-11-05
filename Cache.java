@@ -23,5 +23,8 @@ public bool exist(T item){
 public T getFirst(){
     return el.getFirst();
 }
+public T getLust(){
+    return el.getLast();
+}
 
 }
