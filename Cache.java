@@ -20,5 +20,8 @@ public bool remove(T item){
 public bool exist(T item){
     return el.contains(item);
 }
+public T getFirst(){
+    return el.getFirst();
+}
 
 }
