@@ -1,39 +1,41 @@
-package com.sibsutis;
+package com.sibsutis.devices;
 
-import java.awt.print.Printable;
+import com.sibsutis.Printable;
 
-public abstract  class Device {
-    private int id;
-    private int price;
-    private String ip;
-    public Device(int id, int price, String ip){
-        this.id = id;
-        this.price =price;
-        this.ip = null;
-    }
-    public int GetId(){
-        return id;
-    }
-    public int getPrice(){
-        return price;
-    }
-    public String GetIp(){
-        return ip;
-    }
-    @Override
-    public String print(){
-        return "Device {"+ip+";"+price+";"+ip+";"+GetDeviceType;
-    }
-    public abstract  String GetDeviceType();
-    @Override
-    public boolean equals(Object o){
-        if(this == o){ return true;}
-        if (o == null || o.getClass()!=this.getClass()){ return false;}
-        Device device = (Device)o;
-        return id == device.id && price == device.price;
-    }
-    @Override
-    public hashCode(){
-        return Object.hash(id,price,ip);
-    }
+public abstract class Device implements Printable {
+    final int id; 
+    final int price;
+    final String ip;
+
+public Device(int id, int price, String ip){
+    this.id = id;
+    this.price = price;
+    this.ip = null;
+}
+public int getid(){
+    return id;
+}
+public int getprice(){
+    return price;
+}
+public String getip(){
+    return ip;
+}
+@Override
+public String print(){
+    System.out.println("Device:" + getip() + " " + getid() + " " + getprice() + " " + getdevicetype());
+    return "++";
+}
+public abstract String getdevicetype();
+
+public boolean equals(Object o){
+    if (o == this) return true;
+        if (!(o instanceof Device)) return false;
+        Device computer = (Device)o;
+        return true;
+};
+
+public int hashcode(){
+    return super.hashCode();
+};
 }

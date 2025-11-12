@@ -1,4 +1,4 @@
 package com.sibsutis;
-public interface Printable(){
-    String print();
-    }
+public interface Printable{
+    public String print();
+}

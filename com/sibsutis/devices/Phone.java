@@ -1,15 +1,24 @@
-package com.sibsutis;
-public class Phone{
-    public Phone(int id, int price){
-        this.id = id;
-        this.price = price;
+package com.sibsutis.devices;
+public class Phone extends Device{
+    public Phone(int id,int price){
+        super(id, price, null);
     }
-    public Phone(int id, int price, int ip){
-        this.id = id;
-        this.price = price;
-        this.ip = ip;
+    public Phone(int id,int price, String ip){
+        super(id, price, ip);
     }
-    public String GetDeviceType(){
+    @Override
+    public String getdevicetype(){
         return "Phone";
+    }
+    @Override
+    public boolean equals(Object o){
+        if (o == this) return true;
+        if (!(o instanceof Phone)) return false;
+        Phone phone = (Phone)o;
+        return true;
+    }
+    @Override
+    public int hashcode(){
+        return super.hashCode();
     }
 }
